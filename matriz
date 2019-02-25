@@ -1,0 +1,116 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package red_neuronal;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Jhonathan
+ */
+public class Matriz {
+    Scanner leer = new Scanner(System.in);
+    public void llenarmatriz(int matriz[][]){
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                System.out.println("posicion:["+i+"]["+j+"]");
+                matriz[i][j] = leer.nextInt();                
+            }
+        }
+    }
+    
+    public void llenarvector(int matriz[]){
+        for(int i = 0; i < 100; i++){            
+            System.out.println("posicion:["+i+"]");
+            matriz[i] = leer.nextInt();                
+        }
+    }
+    
+    public void llenarvectormatriz(int matriz[][], int vector[]){
+        int v= 0;
+        for(int i = 0; i < 100; i++){            
+            for(int j = 0; j < 100; j++){
+                //System.out.print(matriz1[j][i]+"   ");                
+                vector[v]=matriz[i][j];
+                v++;
+            }
+            //System.out.println("");   
+        }
+    }
+    
+    public void mostrarmatriz(int matriz[][]){
+        for(int i = 0; i < 10; i++){            
+            for(int j = 0; j < 10; j++){
+                System.out.print(matriz[j][i]+"   ");                
+            }
+            System.out.println("");   
+        }
+    }
+    
+    public void mostrarvector(int vector[],int tamañovector){
+        for(int i = 0; i< tamañovector; i++){
+            
+            System.out.println(vector[i]+"     ");
+        }
+    }
+    
+    public void multiplicacionTraspuestaVectores(int vector[],int matriz[][]){
+        for(int i = 0; i < 100; i++){            
+            for(int j = 0; j < 100; j++){
+               matriz[i][j]=(vector[i]*vector[j]);             
+            }
+        }
+    }
+    public void llenarw(int matriz1[][], int matriz2[][], int matrizw[][]){
+        for(int i = 0; i < 100; i++){            
+            for(int j = 0; j < 100; j++){
+               matrizw[i][j]=(matriz1[i][j]-matriz2[i][j]);             
+            }
+        }
+    }
+    public void matrizidentidad(int matriz[][]){
+        for(int i = 0; i < 100; i++){            
+            for(int j = 0; j < 100; j++){
+               if(i==j){
+                   matriz[i][j]=1;
+               }else{
+                   matriz[i][j]=0;
+               }             
+            }
+        }
+    }
+    
+    public void llenarwtotal(int matriz1[][], int matriz2[][], int matrizw[][]){
+        for(int i = 0; i < 100; i++){            
+            for(int j = 0; j < 100; j++){
+               matrizw[i][j]=(matriz1[i][j]+matriz2[i][j]);             
+            }
+        }
+    }
+    
+    public void respuesta(int vector[], int matriz[][], int solucion[]){
+        int posicionsolucion = 0;
+        int posicionvector = 0;
+        int auxiliar =0;
+        for(int i = 0; i < 100; i++){            
+            for(int j = 0; j < 100; j++){
+               auxiliar += (vector[posicionvector]*matriz[j][i]);
+                
+               posicionvector++;
+            }
+            System.out.println("Auxiliar: "+auxiliar);
+            if(auxiliar<0){
+                solucion[posicionsolucion]=-1;
+                auxiliar=0;
+            }else{
+                solucion[posicionsolucion]=1;
+                auxiliar=0;
+            }
+            posicionvector=0;
+            posicionsolucion++;
+        }
+    }
+}
