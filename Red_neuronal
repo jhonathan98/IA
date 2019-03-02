@@ -17,76 +17,138 @@ public class Red_Neuronal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner leer = new Scanner(System.in);
+        int [][] matrizidentidad = new int[100][100];
+        int [] solucion = new int[100];
+        int [][] imagen1 = {
+                            {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1,-1,-1, 1, 1,-1,-1,-1,-1},
+                            {-1,-1,-1,-1, 1, 1,-1,-1,-1,-1},
+                            {-1,-1,-1,-1, 1, 1,-1,-1,-1,-1},
+                            {-1,-1,-1,-1, 1, 1,-1,-1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1,-1,-1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1,-1,-1,-1,-1},
+                            {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                            };
+
+        int [][] imagen2 = {
+                            {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                            {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                            {-1, 1, 1, 1, 1, 1, 1,-1,-1,-1},
+                            {-1, 1, 1, 1, 1, 1, 1,-1,-1,-1},
+                            {-1, 1, 1,-1,-1,-1,-1,-1,-1,-1},
+                            {-1, 1, 1,-1,-1,-1,-1,-1,-1,-1},
+                            {-1, 1, 1, 1, 1, 1, 1,-1,-1,-1},
+                            {-1, 1, 1, 1, 1, 1, 1,-1,-1,-1},
+                            {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                            {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+                            };
+					
+        int [][] imagen3 = {
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1,-1,-1,-1,-1, 1, 1,-1,-1},
+                            {-1,-1,-1,-1,-1,-1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1,-1,-1,-1,-1,-1,-1},
+                            {-1,-1, 1, 1,-1,-1,-1,-1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            };
+        int [][] imagen4 = {
+                            { 1, 1, 1, 1, 1, 1, 1, 1, 1,-1},
+                            { 1, 1, 1, 1, 1, 1, 1, 1, 1,-1},
+                            { 1, 1, 1, 1, 1, 1, 1, 1, 1,-1},
+                            { 1, 1, 1,-1,-1,-1, 1, 1, 1,-1},
+                            { 1, 1, 1,-1,-1,-1, 1, 1, 1,-1},
+                            { 1, 1, 1,-1,-1,-1, 1, 1, 1,-1},
+                            { 1, 1, 1,-1,-1,-1, 1, 1, 1,-1},
+                            { 1, 1, 1, 1, 1, 1, 1, 1, 1,-1},
+                            { 1, 1, 1, 1, 1, 1, 1, 1, 1,-1},
+                            { 1, 1, 1, 1, 1, 1, 1, 1, 1,-1},
+                            };
+        int [][] imagen5 = {
+                            {-1,-1,-1,-1, 1, 1,-1,-1,-1,-1},
+                            {-1,-1,-1,-1, 1, 1,-1,-1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1,-1,-1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1,-1,-1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1,-1,-1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            {-1,-1, 1, 1, 1, 1, 1, 1,-1,-1},
+                            };
+        int [] imgingreso = {
+                             1, 1, 1, 1, 1, 1, 1, 1, 1,-1,
+                             1, 1, 1, 1, 1, 1, 1, 1, 1,-1,
+                             1, 1, 1, 1, 1, 1, 1, 1, 1,-1,
+                             1, 1, 1,-1,-1,-1,-1,-1,-1,-1,
+                             1, 1, 1,-1,-1,-1,-1,-1,-1,-1,
+                             1, 1, 1,-1,-1,-1,-1,-1,-1,-1,
+                             1, 1, 1,-1,-1,-1,-1,-1,-1,-1,
+                             1, 1, 1, 1, 1, 1, 1, 1, 1,-1,
+                             1, 1, 1, 1, 1, 1, 1, 1, 1,-1,
+                             1, 1, 1, 1, 1, 1, 1, 1, 1,-1,
+                            };
         
         Matriz matriz = new Matriz();
+        int [] vectorimagen1 = new int[100];
+        int [] vectorimagen2 = new int[100];
+        int [] vectorimagen3 = new int[100];
+        int [] vectorimagen4 = new int[100];
+        int [] vectorimagen5 = new int[100];
         
-        int [][] matrizidentidad = new int[10][10];
-        int [][] matriz1 = new int[10][10]; 
-        int [] vectorMatriz1 = new int[100];
-        int [][] multVectorTrans1 = new int[10][10];
-        int [][] w1 = new int[10][10];
+        int [][] multiVectxVectT1 = new int[100][100];
+        int [][] multiVectxVectT2 = new int[100][100];
+        int [][] multiVectxVectT3 = new int[100][100];
+        int [][] multiVectxVectT4 = new int[100][100];
+        int [][] multiVectxVectT5 = new int[100][100];
         
-        int [][] matriz2 = new int[10][10];
-        int [] vectormatriz2 = new int[4];
-        int [][] multVectorTrans2 = new int[4][4];
-        int [][] w2 = new int[4][4];
+        int [][] w1 = new int[100][100];
+        int [][] w2 = new int[100][100];
+        int [][] w3 = new int[100][100];
+        int [][] w4 = new int[100][100];
+        int [][] w5 = new int[100][100];
         
-        int [][] wtotal = new int[10][10];
+        int [][] wtotal = new int[100][100];
         
-        int [] matrizDibujo = new int[100];
+        //llenamos la matriz identidad
+        matriz.matrizidentidad(matrizidentidad, 100);
         
-        int [] solucion = new int[100];
+        //hallamos w1
+        matriz.llenarvectormatriz(imagen1, vectorimagen1);        
+        matriz.multiplicacionTraspuestaVectores(vectorimagen1, multiVectxVectT1);                
+        matriz.llenarw(multiVectxVectT1, matrizidentidad, w1);
+        //hallamos w2
+        matriz.llenarvectormatriz(imagen2, vectorimagen2);        
+        matriz.multiplicacionTraspuestaVectores(vectorimagen2, multiVectxVectT2);                
+        matriz.llenarw(multiVectxVectT2, matrizidentidad, w2);
+        //hallamos w3
+        matriz.llenarvectormatriz(imagen3, vectorimagen3);        
+        matriz.multiplicacionTraspuestaVectores(vectorimagen3, multiVectxVectT3);                
+        matriz.llenarw(multiVectxVectT3, matrizidentidad, w3);
+        //hallamos w4
+        matriz.llenarvectormatriz(imagen4, vectorimagen4);        
+        matriz.multiplicacionTraspuestaVectores(vectorimagen4, multiVectxVectT4);                
+        matriz.llenarw(multiVectxVectT4, matrizidentidad, w4);
+        //hallamos w5
+        matriz.llenarvectormatriz(imagen5, vectorimagen5);        
+        matriz.multiplicacionTraspuestaVectores(vectorimagen5, multiVectxVectT5);                
+        matriz.llenarw(multiVectxVectT5, matrizidentidad, w5);
         
-        int [][] matriz3 = new int[10][10];
-        int [] vectorMatriz3 = new int[100];
-        int [][] multVectorTrans3 = new int[10][10];
-        int [][] w3 = new int[10][10];
-        int [][] matriz4 = new int[10][10];
-        int [][] matriz5 = new int[10][10];
+        //hallamos wtotal
+        matriz.llenarwtotal(w1, w2, w3, w4, w5, wtotal);
         
+        //hallar la solcion
+        matriz.respuesta(imgingreso, wtotal, solucion );
         
-        matriz.matrizidentidad(matrizidentidad);
-        System.out.println("Ingrese los valores de la primera matriz");
-        /*
-        matriz.llenarmatriz(matriz1);
-        matriz.llenarvectormatriz(matriz1, vectorMatriz1);
-        matriz.multiplicacionTraspuestaVectores(vectorMatriz1, multVectorTrans1);           
-        matriz.restamatriz(multVectorTrans1, matrizidentidad, w1);
-        matriz.mostrarmatriz(w1);
-        System.out.println("Ingrese los valores de la segunda matriz");
-        matriz.llenarmatriz(matriz2);
-        matriz.llenarvectormatriz(matriz2, vectormatriz2);
-        matriz.multiplicacionTraspuestaVectores(vectormatriz2, multVectorTrans2);
-        matriz.restamatriz(multVectorTrans2, matrizidentidad, w2);
-        matriz.mostrarmatriz(w2);
+        //matriz.mostrarvector(solucion, 100);
+        matriz.comparando(solucion, vectorimagen1, vectorimagen2, vectorimagen3, vectorimagen4, vectorimagen5, wtotal);
+        //System.out.println("los vectores son: "+matriz.vectoresiguales(solucion, solucion, 100));
         
-        System.out.println("W TOTAL ES IGUAL A:");
-        matriz.sumamatriz(w1, w2, wtotal);
-        matriz.mostrarmatriz(wtotal);
-        
-        System.out.println("Ingrese la matriz que piensa dibujar");
-        matriz.llenarvector(matrizDibujo);
-        matriz.respuesta(matrizDibujo, wtotal, solucion);
-        matriz.mostrarvector(solucion, 4);
-        */
-        
-        matriz.llenarmatriz(matriz1);
-        matriz.llenarvectormatriz(matriz1, vectorMatriz1);
-        System.out.println("Ingrese los valores de la segunda matriz");
-        //matriz.llenarmatriz(matriz3);
-        //matriz.llenarvectormatriz(matriz3, vectorMatriz3);
-        //operaciones
-        matriz.multiplicacionTraspuestaVectores(vectorMatriz1, multVectorTrans1);
-        //matriz.multiplicacionTraspuestaVectores(vectorMatriz3, multVectorTrans3);
-        matriz.llenarw(multVectorTrans1, matrizidentidad, w1);
-        //matriz.llenarw(multVectorTrans3, matrizidentidad, w3);
-        //matriz.llenarwtotal(w1, w3, wtotal);
-        //reconocimiento
-        System.out.println("Ingrese los datos para el reconocimiento");
-        matriz.llenarvector(matrizDibujo);
-        matriz.respuesta(matrizDibujo, w1, solucion);
-        matriz.mostrarvector(solucion, 100);
         
     }
     
